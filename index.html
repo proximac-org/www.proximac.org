@@ -1,25 +1,40 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>Proximac by proximac-org</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Proximac by proximac-org</title>
   </head>
+
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Proximac</h1>
-      <h2 class="project-tagline">The project page for proximac</h2>
-    </section>
+    <div id="container">
+      <div class="inner">
 
-    <section class="main-content">
-      <p><img src="https://raw.githubusercontent.com/csujedihy/proximac/master/img/proximac-logo.png" alt="image"></p>
+        <header>
+          <h1>Proximac</h1>
+          <h2>Proximac enforces all applications working through proxy servers</h2>
+        </header>
 
-<h4>
-<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h4>
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/proximac-org/www.proximac.org/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/proximac-org/www.proximac.org/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/proximac-org/www.proximac.org" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <p><img src="https://raw.githubusercontent.com/csujedihy/proximac/master/img/proximac-logo.png" alt="image"></p>
+
+<h3>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h3>
 
 <p>Proximac is an command-line open-source alternative to Proxifier. With Proximac, it can force App to use SOCKS5 proxy. In the other words, it can forward any App's traffic to a certain SOCKS5 proxy. Moreover, Proximac now can forward all network traffic in your system to a proxy which means you may not need a VPN to do this job. I hope more developers can join this project.</p>
 
@@ -32,21 +47,33 @@
 
 <p>Note: Proximac only works on Mac OSX.</p>
 
+<h3>
+<a id="install-proximac" class="anchor" href="#install-proximac" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install Proximac</h3>
+
+<pre><code>curl -fsSL https://raw.githubusercontent.com/proximac-org/proximac-install/master/install.py |python 
+</code></pre>
+
+<p>Paste that at a Terminal prompt.</p>
+
 <h4>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h4>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h4>
 
 <ol>
 <li>If you plan to use Proximac on OSX 10.10+, please run <code>sudo nvram boot-args="debug=0x146 kext-dev-mode=1"</code>. (Sorry, I do not have enough money to buy a developer membership to sign the kext)</li>
-<li>Install libuv first. Run <code>brew install libuv</code> or whatever</li>
-<li>Run <code>curl -fsSL https://raw.githubusercontent.com/proximac-org/proximac-install/master/install.py |python</code>
-</li>
+<li>Run <code>brew install libuv</code> or whatever to install libuv that Proximac relies on</li>
+</ol>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<ol>
 <li>Set up your config file which indicates Proximac's work mode (VPN or per-App) and proxy configuration</li>
 <li>Run <code>proximac start [path of your config file]</code> to start Proximac</li>
 <li>Run <code>proximac stop</code> to stop Proximac</li>
 </ol>
 
-<h4>
-<a id="how-to-build-from-source" class="anchor" href="#how-to-build-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to build from source</h4>
+<h3>
+<a id="how-to-build-from-source" class="anchor" href="#how-to-build-from-source" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to build from source</h3>
 
 <p>NOTE: Proximac is based on libuv. So, before compile this project, make sure <a href="https://github.com/libuv/libuv">libuv</a> was successfully installed:</p>
 
@@ -59,8 +86,8 @@ $ make install
 
 <p>Then, open Xcode project file and build it.</p>
 
-<h4>
-<a id="an-example-of-the-config-file" class="anchor" href="#an-example-of-the-config-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>An example of the config file</h4>
+<h3>
+<a id="an-example-of-the-config-file" class="anchor" href="#an-example-of-the-config-file" aria-hidden="true"><span class="octicon octicon-link"></span></a>An example of the config file</h3>
 
 <p>We use almost the same config file as shadowsocks do but add new arguments. (<strong>Not in VPN mode</strong>)</p>
 
@@ -97,38 +124,19 @@ $ make install
 <p>Set <strong><em>VPN_mode</em></strong> to 1 to enable VPN mode. 
 Set <strong><em>proxyapp_name</em></strong> to your proxy's process name in case network traffic are trapped in a loop or we can call it a white-list but now Proximac only supports one proxy.</p>
 
-<h4>
-<a id="references" class="anchor" href="#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h4>
-
-<p>This software is partly based on projects below.</p>
-
-<ol>
-<li>
-<a href="https://github.com/shadowsocks/shadowsocks-libev">Shadowsocks-libev</a>.</li>
-<li>
-<a href="https://github.com/dndx/shadowsocks-libuv">Shadowsocks-libuv</a>.</li>
-<li>
-<a href="https://github.com/libuv/libuv">libuv</a>.</li>
-<li>
-<a href="https://github.com/quartzjer/js0n">js0n</a>.</li>
-<li>tcplognke (Apple).</li>
-<li>
-<a href="https://code.google.com/p/drcom4mac/">drcom4mac</a> (As my kext dev guide book)</li>
-</ol>
-
-<h4>
-<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact:</h4>
+<h3>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact:</h3>
 
 <p>csujedi at icloud dot com</p>
+        </section>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/proximac-org/www.proximac.org">Proximac</a> is maintained by <a href="https://github.com/proximac-org">proximac-org</a>.</span>
+        <footer>
+          Proximac is maintained by <a href="https://github.com/proximac-org">proximac-org</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
+        
+      </div>
+    </div>
   </body>
 </html>
